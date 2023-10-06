@@ -6,8 +6,8 @@ Sistem ini dibuat untuk memenuhi tugas mata kuliah Pemrograman Mobile. Sistem in
 
 ## Direktori
 
-- `client` : Direktori untuk aplikasi client
-- `server` : Direktori untuk aplikasi server
+- `client` : Direktori untuk aplikasi client (Flutter)
+- `server` : Direktori untuk aplikasi server (Belum ditentukan)
 
 ## Cara Penggunaan
 
