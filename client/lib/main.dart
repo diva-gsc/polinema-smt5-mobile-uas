@@ -1,125 +1,181 @@
+import 'package:client/components/drawer_list_tile.dart';
+import 'package:client/components/user_anchor_menu.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 
-void main() {
-  runApp(const MyApp());
+final ThemeData _defaultTheme = ThemeData(
+  useMaterial3: true,
+  primarySwatch: Colors.blue,
+  brightness: Brightness.light,
+  primaryColor: const Color(0xff2196f3),
+  primaryColorLight: const Color(0xffbbdefb),
+  primaryColorDark: const Color(0xff1976d2),
+  canvasColor: const Color(0xfffafafa),
+  scaffoldBackgroundColor: const Color(0xfffafafa),
+  cardColor: const Color(0xffffffff),
+  dividerColor: const Color(0x1f000000),
+  highlightColor: const Color(0x66bcbcbc),
+  splashColor: const Color(0x66c8c8c8),
+  unselectedWidgetColor: const Color(0x8a000000),
+  disabledColor: const Color(0x61000000),
+  buttonTheme: const ButtonThemeData(
+    textTheme: ButtonTextTheme.primary,
+    minWidth: 88,
+    height: 36,
+    padding: EdgeInsets.only(top: 0, bottom: 0, left: 16, right: 16),
+    shape: RoundedRectangleBorder(
+      side: BorderSide(
+          color: Color(0xff000000), width: 0, style: BorderStyle.none),
+      borderRadius: BorderRadius.all(Radius.circular(2.0)),
+    ),
+    alignedDropdown: false,
+    buttonColor: Color(0xffe0e0e0),
+    disabledColor: Color(0x61ffffff),
+    highlightColor: Color(0x29ffffff),
+    splashColor: Color(0x1fffffff),
+  ),
+);
+void main() => runApp(const App());
+
+class App extends StatefulWidget {
+  const App({super.key});
+
+  @override
+  State<App> createState() => _AppState();
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+    return GetMaterialApp(
+      theme: _defaultTheme,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Dashboard'),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 10.0),
+              child: UserAnchorMenu(
+                  icon: Stack(
+                children: [
+                  const CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/dog.jpg'),
+                    radius: 20,
+                  ),
+                  Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        width: 14,
+                        height: 14,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            gradient: const LinearGradient(
+                                colors: [Colors.lightGreen, Colors.green],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight)),
+                      )),
+                ],
+              )),
+            )
           ],
         ),
+        drawer: Drawer(
+            child: Column(
+          children: [
+            Expanded(
+              child: ListView(padding: EdgeInsets.zero, children: [
+                DrawerHeader(
+                  // Solution 1:
+                  //
+                  // decoration: const BoxDecoration(
+                  //   image: DecorationImage(
+                  //       image: AssetImage(
+                  //           'assets/images/dashboard_drawer.jpg'),
+                  //       colorFilter: ColorFilter.mode(
+                  //           Colors.black54, BlendMode.multiply)),
+                  // ),
+                  // child: Column(
+                  //     mainAxisAlignment: MainAxisAlignment.end,
+                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                  //     children: [
+                  //       Padding(
+                  //         padding: const EdgeInsets.symmetric(
+                  //             horizontal: 1, vertical: 12),
+                  //         child: Text(
+                  //           'Car Inventory',
+                  //           style: Theme.of(context)
+                  //               .textTheme
+                  //               .headlineMedium
+                  //               ?.copyWith(
+                  //                 color: Theme.of(context)
+                  //                     .colorScheme
+                  //                     .onBackground
+                  //                     .withOpacity(.85),
+                  //               ),
+                  //         ),
+                  //       )
+                  //     ]),
+
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const CircleAvatar(
+                          backgroundImage: AssetImage('assets/images/dog.jpg'),
+                          radius: 28,
+                        ),
+                        const SizedBox(height: 14),
+                        Text(
+                          'Ruby Nicholas',
+                          style: Theme.of(context).textTheme.titleLarge,
+                        ),
+                        Expanded(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'rubyn@gmail.com',
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                              const UserAnchorMenu(
+                                icon: Icon(Icons.arrow_drop_down),
+                              )
+                            ],
+                          ),
+                        )
+                      ]),
+                ),
+                const DrawerListTile(
+                  icon: Icons.dashboard,
+                  title: 'Dashboard',
+                  isSelected: true,
+                ),
+                const DrawerListTile(
+                  icon: Icons.admin_panel_settings,
+                  title: 'Admin Management',
+                ),
+                const DrawerListTile(
+                  icon: Icons.directions_car,
+                  title: 'Car Stock',
+                ),
+              ]),
+            ),
+            Container(
+              padding: const EdgeInsets.only(bottom: 20, top: 10),
+              decoration: const BoxDecoration(
+                border: BorderDirectional(
+                  top: BorderSide(width: 1, color: Colors.grey),
+                ),
+              ),
+              child: const DrawerListTile(
+                icon: Icons.door_back_door,
+                title: 'Logout',
+              ),
+            )
+          ],
+        )),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

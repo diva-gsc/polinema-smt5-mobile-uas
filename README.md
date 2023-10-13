@@ -1,8 +1,14 @@
-# Sistem Perangkingan Jenjang Karir Mahasiswa
+# Sistem Informasi Inventory untuk Penjualan Mobil
 
 ## Deskripsi
 
-Sistem ini dibuat untuk memenuhi tugas mata kuliah Pemrograman Mobile. Sistem ini dibuat dengan menggunakan bahasa pemrograman Dart dan framework Flutter. Sistem ini dapat digunakan untuk menentukan jenjang karir mahasiswa berdasarkan nilai Akademik dan Prestasi. Sistem ini menggunakan metode SAW (Simple Additive Weighting) untuk menentukan jenjang karir mahasiswa.
+Sistem ini dibuat untuk memenuhi tugas akhir mata kuliah Pemrograman Mobile. Sistem ini dibuat dengan menggunakan bahasa pemrograman Dart dan framework Flutter. Sistem ini dirancang untuk diintegrasikan dengan ERP Odoo. Aplikasi ini bertujuan untuk memudahkan proses penjualan mobil dengan menyediakan sistem informasi inventory yang efisien.
+
+## Fitur
+
+- Manajemen gudang
+- Kontrol stok
+- Proses transaksi
 
 ## Direktori
 
@@ -16,8 +22,8 @@ Sistem ini dibuat untuk memenuhi tugas mata kuliah Pemrograman Mobile. Sistem in
 3. Jalankan perintah `flutter pub get`
 4. Jalankan perintah `flutter run`
 <!-- 5. Masuk pada direktori `server`
-6. Jalankan perintah `npm install`
-7. Jalankan perintah `npm start` -->
+5. Jalankan perintah `npm install`
+6. Jalankan perintah `npm start` -->
 
 ## Anggota Kelompok
 
