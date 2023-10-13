@@ -4,6 +4,13 @@
 
 Sistem ini dibuat untuk memenuhi tugas akhir mata kuliah Pemrograman Mobile. Sistem ini dibuat dengan menggunakan bahasa pemrograman Dart dan framework Flutter. Sistem ini dirancang untuk diintegrasikan dengan ERP Odoo. Aplikasi ini bertujuan untuk memudahkan proses penjualan mobil dengan menyediakan sistem informasi inventory yang efisien.
 
+## Fitur tambahan
+
+- User profile
+- Settings
+  - Dynamic color seed
+  - Dark mode
+
 ## Fitur
 
 - Manajemen gudang
