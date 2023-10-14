@@ -5,11 +5,13 @@ class DrawerListTile extends StatelessWidget {
       {required this.icon,
       required this.title,
       this.isSelected = false,
+      this.onTap,
       super.key});
 
   final bool isSelected;
   final IconData icon;
   final String title;
+  final void Function()? onTap;
   // final Widget? navigateTo; // Use id/widget?
 
   @override
@@ -33,9 +35,10 @@ class DrawerListTile extends StatelessWidget {
           title,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               fontWeight: isSelected ? FontWeight.bold : null,
-              color: isSelected ? Theme.of(context).colorScheme.primary : null),
+              color:
+                  isSelected ? Theme.of(context).colorScheme.primary : null),
         ),
-        onTap: () {},
+        onTap: onTap,
       ),
     );
   }
