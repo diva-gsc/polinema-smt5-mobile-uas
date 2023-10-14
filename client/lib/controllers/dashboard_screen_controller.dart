@@ -1,10 +1,10 @@
-import 'package:client/controllers/settings_screen.dart';
 import 'package:client/models/dashboard_drawer_item.dart';
 import 'package:client/screens/dashboard_screen.dart';
+import 'package:client/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-const drawerItems = [
+final drawerItems = [
   DashboardDrawerItem(
     title: 'Dashboard',
     icon: Icons.dashboard,
@@ -19,10 +19,7 @@ const drawerItems = [
     icon: Icons.directions_car_rounded,
   ),
   DashboardDrawerItem(
-    title: 'Settings',
-    icon: Icons.settings,
-    component: SettingsScreen()
-  ),
+      title: 'Settings', icon: Icons.settings, component: SettingsScreen()),
   DashboardDrawerItem(
     title: 'Logout',
     icon: Icons.logout,

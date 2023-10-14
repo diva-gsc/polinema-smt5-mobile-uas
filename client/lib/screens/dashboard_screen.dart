@@ -10,9 +10,9 @@ class DashboardScreen extends StatelessWidget {
         Container(
           height: 140,
           alignment: Alignment.bottomCenter,
-          margin: EdgeInsets.all(15),
+          margin: const EdgeInsets.all(15),
           decoration: BoxDecoration(
-            image: DecorationImage(
+            image: const DecorationImage(
               image: AssetImage('assets/images/dashboard_drawer.jpg'),
               fit: BoxFit.cover,
             ),
@@ -20,8 +20,8 @@ class DashboardScreen extends StatelessWidget {
           ),
           child: Container(
             width: double.infinity,
-            padding: EdgeInsets.only(top: 6, bottom: 6),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.only(top: 6, bottom: 6),
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(12),
                   bottomRight: Radius.circular(12)),
@@ -30,8 +30,10 @@ class DashboardScreen extends StatelessWidget {
             child: Text(
               'New Arrival',
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: Theme.of(context).colorScheme.onInverseSurface),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyMedium
+                  ?.copyWith(color: Colors.white),
             ),
           ),
         )

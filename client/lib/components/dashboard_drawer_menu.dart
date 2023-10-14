@@ -16,6 +16,7 @@ class DashboardDrawerMenu extends StatelessWidget {
       Get.back();
     }
 
+    // ignore: non_constant_identifier_names, unused_local_variable
     DrawerHeader DrawerSolution1 = DrawerHeader(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -41,6 +42,7 @@ class DashboardDrawerMenu extends StatelessWidget {
           ]),
     );
 
+    // ignore: non_constant_identifier_names
     DrawerHeader DrawerSolution2 = DrawerHeader(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,

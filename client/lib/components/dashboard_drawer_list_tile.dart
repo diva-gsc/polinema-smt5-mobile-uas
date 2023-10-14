@@ -34,8 +34,10 @@ class DashboardDrawerListTile extends StatelessWidget {
         title: Text(
           title,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              fontWeight: isSelected ? FontWeight.bold : null,
-              color: isSelected ? Theme.of(context).colorScheme.primary : null),
+                fontWeight: isSelected ? FontWeight.bold : null,
+                color:
+                    isSelected ? Theme.of(context).colorScheme.primary : null,
+              ),
         ),
         onTap: onTap,
       ),
