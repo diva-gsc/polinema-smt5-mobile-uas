@@ -5,27 +5,34 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(context.mounted);
-    print(context.widget);
     return ListView(
       children: [
         Container(
           height: 140,
           alignment: Alignment.bottomCenter,
           margin: EdgeInsets.all(15),
-          padding: EdgeInsets.only(bottom: 12),
           decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/images/dashboard_drawer.jpg'),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: BorderRadius.circular(12)),
-          child: Text(
-            'Maximize Performance',
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium
-                ?.copyWith(color: Theme.of(context).colorScheme.onSurfaceVariant),
+            image: DecorationImage(
+              image: AssetImage('assets/images/dashboard_drawer.jpg'),
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.circular(12),
+          ),
+          child: Container(
+            width: double.infinity,
+            padding: EdgeInsets.only(top: 6, bottom: 6),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12)),
+              color: Colors.black54,
+            ),
+            child: Text(
+              'New Arrival',
+              textAlign: TextAlign.center,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                  color: Theme.of(context).colorScheme.onInverseSurface),
+            ),
           ),
         )
       ],

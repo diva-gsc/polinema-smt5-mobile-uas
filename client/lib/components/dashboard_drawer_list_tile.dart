@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class DrawerListTile extends StatelessWidget {
-  const DrawerListTile(
+class DashboardDrawerListTile extends StatelessWidget {
+  const DashboardDrawerListTile(
       {required this.icon,
       required this.title,
       this.isSelected = false,
@@ -35,8 +35,7 @@ class DrawerListTile extends StatelessWidget {
           title,
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               fontWeight: isSelected ? FontWeight.bold : null,
-              color:
-                  isSelected ? Theme.of(context).colorScheme.primary : null),
+              color: isSelected ? Theme.of(context).colorScheme.primary : null),
         ),
         onTap: onTap,
       ),
