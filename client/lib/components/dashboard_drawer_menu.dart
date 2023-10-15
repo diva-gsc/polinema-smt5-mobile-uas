@@ -1,11 +1,14 @@
 import 'package:client/components/dashboard_drawer_list_tile.dart';
 import 'package:client/components/user_anchor_menu.dart';
+import 'package:client/controllers/auth_controller.dart';
 import 'package:client/controllers/dashboard_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DashboardDrawerMenu extends StatelessWidget {
   const DashboardDrawerMenu({super.key});
+
+  static AuthController authController = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -20,26 +23,28 @@ class DashboardDrawerMenu extends StatelessWidget {
     DrawerHeader DrawerSolution1 = DrawerHeader(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('assets/images/dashboard_drawer.jpg'),
-            colorFilter: ColorFilter.mode(Colors.black54, BlendMode.multiply)),
+          image: AssetImage('assets/images/dashboard_drawer.jpg'),
+          colorFilter: ColorFilter.mode(Colors.black54, BlendMode.multiply),
+        ),
       ),
       child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 12),
-              child: Text(
-                'Car Inventory',
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onInverseSurface
-                          .withOpacity(.85),
-                    ),
-              ),
-            )
-          ]),
+        mainAxisAlignment: MainAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 1, vertical: 12),
+            child: Text(
+              'Car Inventory',
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: Theme.of(context)
+                        .colorScheme
+                        .onInverseSurface
+                        .withOpacity(.85),
+                  ),
+            ),
+          )
+        ],
+      ),
     );
 
     // ignore: non_constant_identifier_names
@@ -48,13 +53,13 @@ class DashboardDrawerMenu extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CircleAvatar(
-            backgroundImage: AssetImage('assets/images/dog.jpg'),
+          CircleAvatar(
+            backgroundImage: AssetImage(authController.loggedUser.image!),
             radius: 28,
           ),
           const SizedBox(height: 14),
           Text(
-            'Ruby Nicholas',
+            authController.loggedUser.name,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
                   color: Theme.of(context).colorScheme.onSurface,
                 ),
@@ -64,7 +69,7 @@ class DashboardDrawerMenu extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'rubyn@gmail.com',
+                  authController.loggedUser.email,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(context).colorScheme.onSurface,
                       ),

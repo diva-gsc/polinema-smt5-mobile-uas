@@ -1,21 +1,38 @@
+import 'package:client/components/dashboard_appbar.dart';
+import 'package:client/components/dashboard_appbar_user.dart';
 import 'package:client/components/dashboard_drawer_menu.dart';
-import 'package:client/components/user_anchor_menu.dart';
 import 'package:client/config/custom_theme.dart';
+import 'package:client/controllers/auth_controller.dart';
 import 'package:client/controllers/dashboard_screen_controller.dart';
+import 'package:client/models/admin.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 void main() async {
   await GetStorage.init();
+
+  final authController = Get.put(AuthController());
+
+  authController.loggedUser = Admin(
+    '1',
+    'Ruby Nicholas',
+    'a@gmail.com',
+    'nicholasN',
+    true,
+    'assets/images/dog.jpg',
+  );
+
   runApp(App());
 }
 
 class App extends StatelessWidget {
-  final dashboardScreenController = Get.put(DashboardScreenController());
-
   App({super.key});
+
+  final authController = Get.put(AuthController());
+
   final selectedPageIndex = 0.obs;
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
@@ -30,54 +47,26 @@ class App extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Obx(
-            () => Text(
-              drawerItems[dashboardScreenController.selectedPageIndex].title,
-            ),
+          appBar: DashboardAppBar(
+            appBar: AppBar(),
+            actions: const [DashboardAppBarUser()],
           ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10.0),
-              child: UserAnchorMenu(
-                icon: Stack(
-                  children: [
-                    const CircleAvatar(
-                      backgroundImage: AssetImage('assets/images/dog.jpg'),
-                      radius: 20,
-                    ),
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      child: Container(
-                        width: 14,
-                        height: 14,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          gradient: const LinearGradient(
-                            colors: [Colors.lightGreen, Colors.green],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-        drawer: const DashboardDrawerMenu(),
-        body: Obx(
-          () =>
-              drawerItems[dashboardScreenController.selectedPageIndex]
-                  .component ??
-              const Center(
-                child: Text('No Component\'s Yet'),
-              ),
-        ),
-      ),
+          drawer: const DashboardDrawerMenu(),
+          body: MainContent()),
     );
+  }
+}
+
+class MainContent extends StatelessWidget {
+  MainContent({super.key});
+  final dashboardScreenController = Get.put(DashboardScreenController());
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      int pageIndex = dashboardScreenController.selectedPageIndex;
+      return drawerItems[pageIndex].component ??
+          const Center(child: Text('No Component\'s Yet'));
+    });
   }
 }

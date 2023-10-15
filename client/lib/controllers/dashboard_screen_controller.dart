@@ -5,22 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 final drawerItems = [
-  DashboardDrawerItem(
+  const DashboardDrawerItem(
     title: 'Dashboard',
     icon: Icons.dashboard,
     component: DashboardScreen(),
   ),
-  DashboardDrawerItem(
+  const DashboardDrawerItem(
     title: 'Admin Management',
     icon: Icons.supervised_user_circle_outlined,
   ),
-  DashboardDrawerItem(
+  const DashboardDrawerItem(
     title: 'Car Stock',
     icon: Icons.directions_car_rounded,
   ),
   DashboardDrawerItem(
       title: 'Settings', icon: Icons.settings, component: SettingsScreen()),
-  DashboardDrawerItem(
+  const DashboardDrawerItem(
     title: 'Logout',
     icon: Icons.logout,
   ),
@@ -33,4 +33,6 @@ class DashboardScreenController extends GetxController {
 
   int get selectedPageIndex => _selectedPageIndex.value;
   set selectedPageIndex(int pageIndex) => _selectedPageIndex.value = pageIndex;
+
+  void findSelectedMenu() {}
 }
