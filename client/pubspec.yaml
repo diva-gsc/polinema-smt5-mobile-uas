@@ -68,6 +68,9 @@ flutter:
     - assets/images/car3_Lamborghini.jpg
     - assets/images/car4_M4.jpg
     - assets/images/car5_FTypeJaguar.jpg
+    - assets/images/person1.jpg
+    - assets/images/person2.jpg
+    - assets/images/person3.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

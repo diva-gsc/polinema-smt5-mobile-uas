@@ -2,6 +2,7 @@ import 'package:client/components/dashboard_appbar.dart';
 import 'package:client/components/dashboard_appbar_user.dart';
 import 'package:client/components/dashboard_drawer_menu.dart';
 import 'package:client/config/custom_theme.dart';
+import 'package:client/controllers/admin_controller.dart';
 import 'package:client/controllers/auth_controller.dart';
 import 'package:client/controllers/dashboard_screen_controller.dart';
 import 'package:client/controllers/item_controller.dart';
@@ -16,6 +17,7 @@ void main() async {
 
   final authController = Get.put(AuthController());
   final itemController = Get.put(ItemController());
+  final adminController = Get.put(AdminController());
 
   authController.loggedUser = Admin(
     '1',
@@ -61,6 +63,43 @@ void main() async {
     ],
   );
 
+  adminController.admins = RxList(
+    [
+      Admin(
+        '1',
+        'Ruby Nicholas',
+        'a@gmail.com',
+        'nicholasN',
+        true,
+        'assets/images/dog.jpg',
+      ),
+      Admin(
+        '2',
+        'Mike Adams',
+        'mike@gmail.com',
+        'mikeasms',
+        true,
+        'assets/images/person1.jpg',
+      ),
+      Admin(
+        '3',
+        'Edward',
+        'edward@gmail.com',
+        'edwardo',
+        false,
+        'assets/images/person2.jpg',
+      ),
+      Admin(
+        '4',
+        'Jason',
+        'jason@gmail.com',
+        'jasondc',
+        false,
+        'assets/images/person3.jpg',
+      ),
+    ],
+  );
+  
   runApp(App());
 }
 

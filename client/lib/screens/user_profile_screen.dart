@@ -13,6 +13,7 @@ class UserProfileScreen extends StatelessWidget {
     var passwordController = TextEditingController();
 
     void update() {}
+
     Get.dialog(
       Scaffold(
         appBar: AppBar(
@@ -96,8 +97,24 @@ class UserProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 4),
             decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  stops: const [
+                    .2,
+                    .87
+                  ],
+                  colors: [
+                    if (loggedUser.isSuperAdmin) ...[
+                      Theme.of(context).colorScheme.primary,
+                      Theme.of(context).colorScheme.primary.withOpacity(.5)
+                    ] else ...[
+                      Theme.of(context).colorScheme.secondary,
+                      Theme.of(context).colorScheme.secondary.withOpacity(.5)
+                    ]
+                  ]),
               color: loggedUser.isSuperAdmin
                   ? Theme.of(context).colorScheme.error
                   : Theme.of(context).colorScheme.secondary,
@@ -105,6 +122,11 @@ class UserProfileScreen extends StatelessWidget {
             ),
             child: Text(
               loggedUser.isSuperAdmin ? 'Super Admin' : 'Admin',
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: loggedUser.isSuperAdmin
+                        ? Theme.of(context).colorScheme.onError
+                        : Theme.of(context).colorScheme.onSecondary,
+                  ),
             ),
           ),
           const SizedBox(height: 15),
