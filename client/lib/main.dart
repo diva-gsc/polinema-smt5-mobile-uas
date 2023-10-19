@@ -4,7 +4,9 @@ import 'package:client/components/dashboard_drawer_menu.dart';
 import 'package:client/config/custom_theme.dart';
 import 'package:client/controllers/auth_controller.dart';
 import 'package:client/controllers/dashboard_screen_controller.dart';
+import 'package:client/controllers/item_controller.dart';
 import 'package:client/models/admin.dart';
+import 'package:client/models/item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -13,6 +15,7 @@ void main() async {
   await GetStorage.init();
 
   final authController = Get.put(AuthController());
+  final itemController = Get.put(ItemController());
 
   authController.loggedUser = Admin(
     '1',
@@ -21,6 +24,41 @@ void main() async {
     'nicholasN',
     true,
     'assets/images/dog.jpg',
+  );
+
+  itemController.items = RxList(
+    [
+      Item(
+        title: 'Mustang GT',
+        price: 120.000,
+        image: 'assets/images/car1_MustangGT.jpg',
+        qty: 12,
+      ),
+      Item(
+        title: 'Porsche',
+        price: 180.000,
+        image: 'assets/images/car2_Porsche.jpg',
+        qty: 7,
+      ),
+      Item(
+        title: 'Lamborghini',
+        price: 240.000,
+        image: 'assets/images/car3_Lamborghini.jpg',
+        qty: 2,
+      ),
+      Item(
+        title: 'BMW M4',
+        price: 100.000,
+        image: 'assets/images/car4_M4.jpg',
+        qty: 31,
+      ),
+      Item(
+        title: 'F-Type Jaguar',
+        price: 190.000,
+        image: 'assets/images/car5_FTypeJaguar.jpg',
+        qty: 5,
+      ),
+    ],
   );
 
   runApp(App());

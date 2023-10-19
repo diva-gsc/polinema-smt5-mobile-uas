@@ -1,5 +1,6 @@
 import 'package:client/models/dashboard_drawer_item.dart';
 import 'package:client/screens/dashboard_screen.dart';
+import 'package:client/screens/inventory_screen.dart';
 import 'package:client/screens/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,8 +16,9 @@ final drawerItems = [
     icon: Icons.supervised_user_circle_outlined,
   ),
   const DashboardDrawerItem(
-    title: 'Car Stock',
-    icon: Icons.directions_car_rounded,
+    title: 'Inventory',
+    icon: Icons.inventory_2_rounded,
+    component: InventoryScreen()
   ),
   DashboardDrawerItem(
       title: 'Settings', icon: Icons.settings, component: SettingsScreen()),
